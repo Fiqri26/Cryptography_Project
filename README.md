@@ -1,1 +1,1 @@
-# Asli Ni :  Sistem Penerbitan Sertifikat Digital Berbasis Web Dengan Digital Signature Untuk Verifikasi Keaslian Sertifikat
+# SertiValid :  Sistem Penerbitan Sertifikat Digital Berbasis Web Dengan Digital Signature Untuk Verifikasi Keaslian Sertifikat
