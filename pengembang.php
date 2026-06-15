@@ -12,7 +12,7 @@
       <a href="index.php" class="logo"><span class="logo-mark">✓</span> AsliNi</a>
       <ul class="nav-links">
         <li><a href="index.php">Beranda</a></li>
-        <li><a href="certif_print.php">Sertifikat</a></li>
+        <li><a href="certif_print.php">Unduh Sertifikat</a></li>
         <li><a href="certif_verify.php">Verifikasi</a></li>
         <li><a class="active" href="developer.php">Pengembang</a></li>
     </nav>

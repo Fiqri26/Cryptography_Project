@@ -588,3 +588,84 @@ select {
 .result-box.static-result {
   display: block;
 }
+
+.search-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+}
+
+.search-card .btn {
+    margin-top: 10px;
+}
+
+.cert-alert {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.cert-alert.show {
+    display: flex;
+}
+
+.cert-alert-error {
+    background: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    color: var(--danger-text);
+}
+
+.close-alert {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    color: inherit;
+    line-height: 1;
+}
+
+.pdf-container {
+    display: none;
+    margin-top: 30px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.pdf-container.show {
+    display: block;
+}
+
+.pdf-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    background: #fafafa;
+}
+
+.pdf-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 700px;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .pdf-viewer {
+        height: 500px;
+    }
+
+    .search-card {
+        padding: 20px;
+    }
+}

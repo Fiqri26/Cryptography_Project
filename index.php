@@ -12,7 +12,7 @@
       <a href="index.php" class="logo"><span class="logo-mark">✓</span> AsliNi</a>
       <ul class="nav-links">
         <li><a class="active" href="index.php">Beranda</a></li>
-        <li><a href="certif_print.php">Sertifikat</a></li>
+        <li><a href="certif_print.php">Unduh Sertifikat</a></li>
         <li><a href="certif_verify.php">Verifikasi</a></li>
         <li><a href="pengembang.php">Pengembang</a></li>
       </ul>
@@ -22,7 +22,7 @@
   <main>
     <section class="hero">
       <div class="brand-title">✓ AsliNi</div>
-      <h1>Sistem Verifikasi Sertifikat Digital</h1>
+      <h1>Sistem Penerbitan dan Verifikasi Keaslian Sertifikat Digital</h1>
       <p>Menerbitkan dan memverifikasi keaslian sertifikat digital menggunakan digital signature sehingga sertifikat tidak dapat dipalsukan.</p>
       <div class="hero-badges">
         <span class="badge">Keaslian Terjamin</span>
@@ -57,7 +57,7 @@
 
         <div class="cta-panel">
           <p>Ingin memverifikasi sertifikat ?</p>
-          <a href="" class="btn">Mulai Verifikasi Sertifikat</a>
+          <a href="certif_verify.php" class="btn">Mulai Verifikasi Sertifikat</a>
         </div>
       </div>
     </section>
