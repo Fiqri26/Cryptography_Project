@@ -62,7 +62,7 @@
                 </div>
 
                 <iframe
-                    src="assets/certificates/Sertif komp.pdf"
+                    src="#"
                     class="pdf-viewer">
                 </iframe>
 
