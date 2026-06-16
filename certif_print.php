@@ -28,11 +28,6 @@
 
         <div class="search-card">
 
-            <div id="errorAlert" class="cert-alert cert-alert-error">
-                <span>Sertifikat yang Anda cari tidak ditemukan.</span>
-                <button type="button" class="close-alert">&times;</button>
-            </div>
-
             <div class="form-group">
                 <label for="participantName">Nama Peserta</label>
                 <input
@@ -58,7 +53,7 @@
             <div id="pdfContainer" class="pdf-container">
 
                 <div class="pdf-header">
-                    <h3>Sertifikat Ditemukan</h3>
+                    
                 </div>
 
                 <iframe
