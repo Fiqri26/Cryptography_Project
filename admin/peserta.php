@@ -74,7 +74,7 @@ $peserta = $stmt->fetchAll();
                     <td><?= e($row['email']) ?></td>
                     <td><?= e($row['pelatihan']) ?></td>
                     <td><?= e(formatTanggalIndo($row['tanggal_daftar'])) ?></td>
-                    <td><button class="btn-text" type="button" title="Edit belum diaktifkan">✎</button></td>
+                    <td><button class="btn-text" type="button" title="Edit belum diaktifkan">Edit ✎</button></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
