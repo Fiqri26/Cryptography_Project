@@ -21,7 +21,7 @@
             <p class="stat-value"></p>
           </article>
           <article class="stat-card">
-            <p class="stat-label">Sertifikat Diterbitkan</p>
+            <p class="stat-label">Total Sertifikat</p>
             <p class="stat-value"></p>
           </article>
           <article class="stat-card">
