@@ -1,83 +1,54 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-session_start();
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: ../login.php?error=Silakan login terlebih dahulu');
+    exit;
+}
 
 require_once __DIR__ . '/../config/database.php';
 
-$id_admin = $_SESSION['admin_id'];
-
-$fullname = trim($_POST['fullname']);
-$username = trim($_POST['username']);
-$email = trim($_POST['email']);
-$role = trim($_POST['role']);
-$nomor_telepon = trim($_POST['nomor_telepon']);
-
-$password = $_POST['password'];
-$confirm_password = $_POST['confirm_password'];
-
-if (!empty($password)) {
-
-    if ($password !== $confirm_password) {
-
-        die("Konfirmasi password tidak cocok.");
-
-    }
-
-    $hash = password_hash(
-        $password,
-        PASSWORD_DEFAULT
-    );
-
-    $query = mysqli_prepare(
-        $conn,
-        "UPDATE admin
-         SET fullname=?,
-             username=?,
-             email=?,
-             role=?,
-             nomor_telepon=?,
-             password=?
-         WHERE id_admin=?"
-    );
-
-    mysqli_stmt_bind_param(
-        $query,
-        "ssssssi",
-        $fullname,
-        $username,
-        $email,
-        $role,
-        $nomor_telepon,
-        $hash,
-        $id_admin
-    );
-
-} else {
-
-    $query = mysqli_prepare(
-        $conn,
-        "UPDATE admin
-         SET fullname=?,
-             username=?,
-             email=?,
-             role=?,
-             no_telepon=?
-         WHERE id_admin=?"
-    );
-
-    mysqli_stmt_bind_param(
-        $query,
-        "sssssi",
-        $fullname,
-        $username,
-        $email,
-        $role,
-        $no_telepon,
-        $id_admin
-    );
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ../admin/profile.php');
+    exit;
 }
 
-mysqli_stmt_execute($query);
+$adminId = (int) $_SESSION['admin_id'];
+$fullName = trim($_POST['full_name'] ?? '');
+$username = trim($_POST['username'] ?? '');
+$email = trim($_POST['email'] ?? '');
+$phone = trim($_POST['phone'] ?? '');
+$newPassword = $_POST['password'] ?? '';
+$confirmPassword = $_POST['confirm_password'] ?? '';
 
-header("Location: ../admin/profile.php");
+if ($fullName === '' || $username === '') {
+    header('Location: ../admin/profile.php?error=Nama lengkap dan username wajib diisi');
+    exit;
+}
+
+if ($newPassword !== '' && $newPassword !== $confirmPassword) {
+    header('Location: ../admin/profile.php?error=Konfirmasi password tidak sama');
+    exit;
+}
+
+$stmt = $pdo->prepare('SELECT id FROM admins WHERE username = ? AND id <> ? LIMIT 1');
+$stmt->execute([$username, $adminId]);
+if ($stmt->fetch()) {
+    header('Location: ../admin/profile.php?error=Username sudah digunakan admin lain');
+    exit;
+}
+
+if ($newPassword !== '') {
+    $passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+    $stmt = $pdo->prepare('UPDATE admins SET full_name = ?, username = ?, email = ?, phone = ?, password_hash = ? WHERE id = ?');
+    $stmt->execute([$fullName, $username, $email, $phone, $passwordHash, $adminId]);
+} else {
+    $stmt = $pdo->prepare('UPDATE admins SET full_name = ?, username = ?, email = ?, phone = ? WHERE id = ?');
+    $stmt->execute([$fullName, $username, $email, $phone, $adminId]);
+}
+
+$_SESSION['admin_username'] = $username;
+header('Location: ../admin/profil.php?success=Profil berhasil diperbarui');
 exit;

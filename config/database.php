@@ -1,19 +1,13 @@
 <?php
+$host = 'localhost';
+$dbname = 'aslini_db';
+$username = 'root';
+$password = '';
 
-$host     = "localhost";
-$username = "root";
-$password = "";
-$database = "aslini";
-
-$conn = mysqli_connect(
-    $host,
-    $username,
-    $password,
-    $database
-);
-
-if (!$conn) {
-    die("Koneksi database gagal: " . mysqli_connect_error());
+try {
+    $pdo = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die('Koneksi database gagal: ' . $e->getMessage());
 }
-
-mysqli_set_charset($conn, "utf8mb4");

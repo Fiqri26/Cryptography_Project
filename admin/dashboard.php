@@ -1,7 +1,21 @@
 <?php
+$activePage = 'dashboard';
+$pageTitle = 'Dashboard';
+require_once __DIR__ . '/../includes/auth_check.php';
 
-require_once __DIR__ . '/../config/auth.php';
+$totalPeserta = (int) $pdo->query('SELECT COUNT(*) FROM peserta')->fetchColumn();
+$sertifikatDiterbitkan = (int) $pdo->query("SELECT COUNT(*) FROM sertifikat WHERE status IN ('ditandatangani', 'terkirim')")->fetchColumn();
+$menungguSignature = (int) $pdo->query("SELECT COUNT(*) FROM sertifikat WHERE status = 'pending'")->fetchColumn();
+$terkirim = (int) $pdo->query("SELECT COUNT(*) FROM sertifikat WHERE status = 'terkirim'")->fetchColumn();
 
+$stmt = $pdo->query(
+    'SELECT s.*, p.nama, p.pelatihan
+     FROM sertifikat s
+     JOIN peserta p ON p.id = s.peserta_id
+     ORDER BY s.updated_at DESC, s.id DESC
+     LIMIT 5'
+);
+$recentCertificates = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +38,7 @@ require_once __DIR__ . '/../config/auth.php';
         <div class="stat-grid">
           <article class="stat-card">
             <p class="stat-label">Total Peserta</p>
-            <p class="stat-value"></p>
+            <p class="stat-value"><?= $totalPeserta ?></p>
           </article>
           <article class="stat-card">
             <p class="stat-label">Total Sertifikat</p>
