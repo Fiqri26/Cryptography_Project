@@ -7,3 +7,4 @@ fileInput?.addEventListener('change', () => {
 
   uploadText.innerHTML = `${file.name}<br />File berhasil dipilih`;
 });
+
