@@ -4,6 +4,9 @@ require_once __DIR__ . '/../includes/auth_check.php';
 
 $admin = $currentAdmin;
 
+$error = $_GET['error'] ?? '';
+$success = $_GET['success'] ?? '';
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +34,19 @@ $admin = $currentAdmin;
         <section class="content">
 
             <section class="panel">
+                <?php if ($error): ?>
+                    <div class="alert alert-error">
+                        <span><?= e($error) ?></span>
+                        <button type="button" class="alert-close" onclick="this.parentElement.remove();">&times;</button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($success): ?>
+                    <div class="alert alert-success">
+                        <span><?= e($success) ?></span>
+                        <button type="button" class="alert-close" onclick="this.parentElement.remove();">&times;</button>
+                    </div>
+                <?php endif; ?>
 
                 <div class="profile-head">
                     <span class="profile-avatar">
@@ -140,5 +156,6 @@ $admin = $currentAdmin;
 
 </div>
 
+<script src="../assets/js/admin.js"></script>
 </body>
 </html>

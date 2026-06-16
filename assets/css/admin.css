@@ -537,19 +537,75 @@ select:focus {
 
 /* Tambahan untuk versi PHP/XAMPP */
 .alert {
-  padding: 12px 14px;
-  border-radius: 8px;
-  margin-bottom: 18px;
-  font-size: 14px;
-  line-height: 1.5;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.alert-error { background: #f8dddd; border: 1px solid #b55a60; color: #6f1e26; }
-.alert-success { background: var(--success-bg); border: 1px solid #a8d07c; color: var(--success-text); }
-.empty-state {
-  padding: 24px;
-  color: var(--muted);
-  text-align: center;
+
+.alert-success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-left: 5px solid #4caf50;
 }
+
+.alert-error {
+    background: #ffebee;
+    color: #c62828;
+    border-left: 5px solid #ef5350;
+}
+
+.alert-dismissible {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.alert-content i {
+    font-size: 18px;
+}
+
+.alert-close {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+.alert-hide {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .inline-form {
   display: inline;
 }

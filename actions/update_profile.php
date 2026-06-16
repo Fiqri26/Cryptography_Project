@@ -50,5 +50,5 @@ if ($newPassword !== '') {
 }
 
 $_SESSION['admin_username'] = $username;
-header('Location: ../admin/profil.php?success=Profil berhasil diperbarui');
+header('Location: ../admin/profile.php?success=Profil berhasil diperbarui');
 exit;
