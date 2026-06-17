@@ -1,25 +1,13 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (isset($_SESSION['admin_id'])) {
-    header('Location: admin/dashboard.php');
-    exit;
-}
-if (isset($_SESSION['user_id'])) {
-    header('Location: user/profil.php');
-    exit;
-}
 require_once __DIR__ . '/includes/functions.php';
 $error = $_GET['error'] ?? '';
-$success = $_GET['success'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AsliNi - Login</title>
+  <title>AsliNi - Sign Up</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -39,14 +27,13 @@ $success = $_GET['success'] ?? '';
     <section class="auth-card">
       <div class="auth-head">
         <div class="auth-check">✓</div>
-        <h1>Sign-in</h1>
+        <h1>Sign-Up</h1>
         <p>Sistem Sertifikat Digital</p>
       </div>
 
       <?php if ($error): ?><div class="alert alert-error"><?= e($error) ?></div><?php endif; ?>
-      <?php if ($success): ?><div class="alert alert-success"><?= e($success) ?></div><?php endif; ?>
 
-      <form action="actions/login_process.php" method="POST">
+      <form action="actions/signup_process.php" method="POST">
         <div class="form-group">
           <label for="username">Username</label>
           <input class="form-control" type="text" id="username" name="username" placeholder="Masukkan username" required />
@@ -55,12 +42,16 @@ $success = $_GET['success'] ?? '';
           <label for="password">Password</label>
           <input class="form-control" type="password" id="password" name="password" placeholder="Masukkan password" required />
         </div>
-        <button class="btn" type="submit">Login</button>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input class="form-control" type="password" id="confirmPassword" name="confirm_password" placeholder="Masukkan password" required />
+        </div>
+        <button class="btn" type="submit">Daftar</button>
       </form>
 
       <div class="auth-links">
         <a href="index.php">← Kembali ke Beranda</a>
-        <a href="signup.php">Tidak Punya Akun</a>
+        <a href="login.php">Sign In</a>
       </div>
     </section>
   </main>

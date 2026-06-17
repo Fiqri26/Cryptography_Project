@@ -17,15 +17,13 @@ $stmt = $pdo->query(
 );
 $recentCertificates = $stmt->fetchAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AsliNi Admin - Dashboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../assets/css/admin.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
 </head>
 <body>
   <div class="admin-layout">
@@ -41,16 +39,16 @@ $recentCertificates = $stmt->fetchAll();
             <p class="stat-value"><?= $totalPeserta ?></p>
           </article>
           <article class="stat-card">
-            <p class="stat-label">Total Sertifikat</p>
-            <p class="stat-value"></p>
+            <p class="stat-label">Sertifikat Diterbitkan</p>
+            <p class="stat-value"><?= $sertifikatDiterbitkan ?></p>
           </article>
           <article class="stat-card">
             <p class="stat-label">Menunggu Signature</p>
-            <p class="stat-value"></p>
+            <p class="stat-value"><?= $menungguSignature ?></p>
           </article>
           <article class="stat-card">
-            <p class="stat-label">Total Validasi Sertifikat</p>
-            <p class="stat-value"></p>
+            <p class="stat-label">Terkirim</p>
+            <p class="stat-value"><?= $terkirim ?></p>
           </article>
         </div>
 
@@ -64,18 +62,22 @@ $recentCertificates = $stmt->fetchAll();
                 <tr>
                   <th>Nama Peserta</th>
                   <th>Pelatihan</th>
-                  <th>Tanggal Daftar</th>
+                  <th>Tanggal</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
+                <?php if (!$recentCertificates): ?>
+                  <tr><td colspan="4" class="empty-state">Belum ada data sertifikat.</td></tr>
+                <?php endif; ?>
+                <?php foreach ($recentCertificates as $row): ?>
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= e($row['nama']) ?></td>
+                    <td><?= e($row['pelatihan']) ?></td>
+                    <td><?= e(formatTanggalIndo($row['tanggal_terbit'])) ?></td>
+                    <td><span class="status <?= e(statusClass($row['status'])) ?>"><?= e(statusText($row['status'])) ?></span></td>
                   </tr>
-
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>

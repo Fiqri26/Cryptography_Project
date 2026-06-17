@@ -32,9 +32,7 @@ $peserta = $stmt->fetchAll();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AsliNi Admin - Data Peserta</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../assets/css/admin.css" />
-
+  <link rel="stylesheet" href="../css/admin.css" />
 </head>
 <body>
   <div class="admin-layout">
@@ -49,6 +47,7 @@ $peserta = $stmt->fetchAll();
         <section class="panel">
           <div class="panel-header">
             <h2>Kelola Data Peserta</h2>
+            <a class="btn" href="#formTambah">Tambah Peserta</a>
           </div>
           <form class="toolbar" method="GET" action="peserta.php">
             <input class="form-control" type="text" name="q" placeholder="Cari peserta..." value="<?= e($q) ?>" />
@@ -74,7 +73,7 @@ $peserta = $stmt->fetchAll();
                     <td><?= e($row['email']) ?></td>
                     <td><?= e($row['pelatihan']) ?></td>
                     <td><?= e(formatTanggalIndo($row['tanggal_daftar'])) ?></td>
-                    <td><button class="btn-text" type="button" title="Edit belum diaktifkan">Edit ✎</button></td>
+                    <td><button class="btn-text" type="button" title="Edit belum diaktifkan">✎</button></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

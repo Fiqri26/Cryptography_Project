@@ -11,15 +11,8 @@ if (!isset($_SESSION['admin_id'])) {
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/functions.php';
 
-$stmt = $pdo->prepare(
-    'SELECT id, full_name, username, email, phone, role
-     FROM admins
-     WHERE id = ?
-     LIMIT 1'
-);
-
+$stmt = $pdo->prepare('SELECT id, full_name, username, email, phone, role FROM admins WHERE id = ? LIMIT 1');
 $stmt->execute([$_SESSION['admin_id']]);
-
 $currentAdmin = $stmt->fetch();
 
 if (!$currentAdmin) {
@@ -28,9 +21,4 @@ if (!$currentAdmin) {
     exit;
 }
 
-/* Alias agar mudah dipakai di file lain */
-$admin = $currentAdmin;
-
-$currentAdminInitials = adminInitials(
-    $currentAdmin['full_name']
-);
+$currentAdminInitials = adminInitials($currentAdmin['full_name']);

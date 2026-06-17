@@ -1,9 +1,9 @@
 <?php
-function e(string $value): string {
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+function e($value) {
+    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
-function statusClass(string $status): string {
+function statusClass($status) {
     return match ($status) {
         'terkirim' => 'status-success',
         'ditandatangani' => 'status-purple',
@@ -11,7 +11,7 @@ function statusClass(string $status): string {
     };
 }
 
-function statusText(string $status): string {
+function statusText($status) {
     return match ($status) {
         'terkirim' => 'Terkirim',
         'ditandatangani' => 'Ditandatangani',
@@ -19,7 +19,7 @@ function statusText(string $status): string {
     };
 }
 
-function formatTanggalIndo(string $dateString): string {
+function formatTanggalIndo($dateString) {
     if (!$dateString) {
         return '-';
     }
@@ -41,8 +41,8 @@ function formatTanggalIndo(string $dateString): string {
     return "{$day} {$month} {$year}";
 }
 
-function adminInitials(string $name): string {
-    $words = preg_split('/\s+/', trim($name));
+function adminInitials($name) {
+    $words = preg_split('/\s+/', trim((string) $name));
     $initials = '';
     foreach ($words as $word) {
         if ($word !== '') {

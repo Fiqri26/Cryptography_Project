@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin_id'])) {
 require_once __DIR__ . '/../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../admin/profile.php');
+    header('Location: ../admin/profil.php');
     exit;
 }
 
@@ -24,19 +24,19 @@ $newPassword = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirm_password'] ?? '';
 
 if ($fullName === '' || $username === '') {
-    header('Location: ../admin/profile.php?error=Nama lengkap dan username wajib diisi');
+    header('Location: ../admin/profil.php?error=Nama lengkap dan username wajib diisi');
     exit;
 }
 
 if ($newPassword !== '' && $newPassword !== $confirmPassword) {
-    header('Location: ../admin/profile.php?error=Konfirmasi password tidak sama');
+    header('Location: ../admin/profil.php?error=Konfirmasi password tidak sama');
     exit;
 }
 
 $stmt = $pdo->prepare('SELECT id FROM admins WHERE username = ? AND id <> ? LIMIT 1');
 $stmt->execute([$username, $adminId]);
 if ($stmt->fetch()) {
-    header('Location: ../admin/profile.php?error=Username sudah digunakan admin lain');
+    header('Location: ../admin/profil.php?error=Username sudah digunakan admin lain');
     exit;
 }
 
@@ -50,5 +50,5 @@ if ($newPassword !== '') {
 }
 
 $_SESSION['admin_username'] = $username;
-header('Location: ../admin/profile.php?success=Profil berhasil diperbarui');
+header('Location: ../admin/profil.php?success=Profil berhasil diperbarui');
 exit;
