@@ -1,5 +1,5 @@
 # AsliNi: Sistem Verifikasi Keaslian Sertifikat Digital Berbasis Digital Signature
-Link Video Presentasi :
+Link Video Presentasi : https://drive.google.com/drive/folders/1a9_83TAo4cxzMDnfBfSMayA2BSB6QDJn?usp=sharing
 
 Anggota Kelompok :
 1. Putra Heryan Gagah Perkasa (NIM : F1D022087)
