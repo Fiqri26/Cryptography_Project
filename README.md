@@ -1,4 +1,4 @@
-# AsliNi: SISTEM VERIFIKASI KEASLIAN SERTIFIKAT DIGITAL BERBASIS DIGITAL SIGNATURE
+# AsliNi: Sistem Verifikasi Keaslian Sertifikat Digital Berbasis Digital Signature
 Link Video Presentasi :
 
 Anggota Kelompok :
